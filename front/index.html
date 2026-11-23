@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Productos</h1>
+    </header>
+
+    <main>
+      <p id="mensaje" class="mensaje" hidden></p>
+
+      <section class="panel">
+        <h2 id="titulo-formulario">Nuevo producto</h2>
+
+        <!-- novalidate: desactiva las validaciones del navegador para que
+           los errores los informe la API (400) y se vean en pantalla -->
+        <form id="formulario" novalidate>
+          <input type="hidden" id="id" />
+
+          <label
+            >Nombre
+            <input type="text" id="nombre" />
+          </label>
+
+          <label
+            >Precio
+            <input type="number" id="precio" step="0.01" />
+          </label>
+
+          <label
+            >Stock
+            <input type="number" id="stock" step="1" />
+          </label>
+
+          <label
+            >Categoría
+            <select id="categoria"></select>
+          </label>
+
+          <div class="botones">
+            <button type="submit">Guardar</button>
+            <button type="button" id="btn-cancelar" class="secundario" hidden>
+              Cancelar edición
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <div class="encabezado-lista">
+          <h2>Listado</h2>
+
+          <label class="filtro"
+            >Filtrar por categoría
+            <select id="filtro-categoria"></select>
+          </label>
+        </div>
+
+        <div id="lista" class="lista"></div>
+      </section>
+
+      <!-- ====== Pedidos ====== -->
+      <section class="panel seccion-pedidos">
+        <h2>Nuevo pedido</h2>
+
+        <!-- Agrega un producto al pedido que se está armando (todavía no se envía a la API) -->
+        <form id="formulario-pedido" novalidate>
+          <label
+            >Producto
+            <select id="pedido-producto"></select>
+          </label>
+
+          <label
+            >Cantidad
+            <input type="number" id="pedido-cantidad" step="1" value="1" />
+          </label>
+
+          <div class="botones">
+            <button type="submit">Agregar al pedido</button>
+          </div>
+        </form>
+
+        <div id="pedido-items" class="detalle-pedido"></div>
+
+        <div class="botones">
+          <button type="button" id="btn-confirmar">Confirmar pedido</button>
+          <button type="button" id="btn-vaciar" class="secundario">
+            Vaciar pedido
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Pedidos realizados</h2>
+        <div id="lista-pedidos" class="lista-pedidos"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
